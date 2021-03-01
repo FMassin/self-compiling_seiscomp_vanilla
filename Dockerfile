@@ -2,9 +2,9 @@ FROM debian:buster-slim
 
 MAINTAINER Fred Massin  <fmassin@sed.ethz.ch>
 
-ENV   WORK_DIR /usr/local/src/
-ENV TARGET_DIR /opt/seiscomp
-ENV  REPO_PATH https://github.com/SeisComP
+ENV   REPO_PATH https://github.com/SeisComP
+ENV    WORK_DIR /usr/local/src
+ENV INSTALL_DIR /opt/seiscomp
 
 # Fix Debian  env
 ENV DEBIAN_FRONTEND noninteractive
