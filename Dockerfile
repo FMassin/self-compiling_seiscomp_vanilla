@@ -113,14 +113,14 @@ RUN groupadd --gid $GROUP_ID -r sysop && useradd -m -s /bin/bash --uid $USER_ID 
     && echo 'sysop:sysop' | chpasswd \
     && chown -R sysop:sysop $INSTALL_DIR
 
-RUN mkdir -p /home/sysop/.seiscomp3 \
+RUN mkdir -p /home/sysop/.seiscomp \
     && chown -R sysop:sysop /home/sysop
 
 USER sysop
 
 #### SeisComp3 settings ###
 ## Configure
-RUN /opt/seiscomp3/bin/seiscomp print env >> /home/sysop/.profile
+RUN $INSTALL_DIR/bin/seiscomp print env >> /home/sysop/.profile
 #RUN echo 'export SEISCOMP_ROOT="/opt/seiscomp3/"' >> /home/sysop/.profile
 #RUN echo 'export LD_LIBRARY_PATH="$SEISCOMP_ROOT/lib:/usr/local/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"'>> /home/sysop/.profile
 #RUN echo 'export PYTHONPATH="$PYTHONPATH:$SEISCOMP_ROOT/lib/python"' >> /home/sysop/.profile
