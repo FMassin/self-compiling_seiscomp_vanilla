@@ -79,10 +79,14 @@ RUN git clone https://github.com/SeisComP3/seiscomp3.git $WORK_DIR/seiscomp3 \
     && cd $WORK_DIR/seiscomp3 \
     && git checkout release/jakarta \
     && git pull \
+    && git submodule add -f https://github.com/ovsm-dev/ipgp-addons.git src/ipgp-addons \
     && cd $WORK_DIR/seiscomp3/build \
     && cmake .. -DSC_GLOBAL_GUI=ON \
-       -DSC_TRUNK_DB_MYSQL=ON -DSC_TRUNK_DB_POSTGRESQL=ON -DSC_TRUNK_DB_SQLITE3=ON \
-       -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR \
+                -DSC_IPGPADDONS_GUI_APPS=ON \
+                -DSC_TRUNK_DB_MYSQL=ON \
+                -DSC_TRUNK_DB_POSTGRESQL=ON \
+                -DSC_TRUNK_DB_SQLITE3=ON \
+                -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR \
     && make -j $(grep -c processor /proc/cpuinfo) \
     && make install
 
