@@ -81,6 +81,7 @@ RUN echo "Cloning base repository into $WORK_DIR/seiscomp" \
     && cd $WORK_DIR/seiscomp/src/base \
     && git clone $REPO_PATH/seedlink.git \
     && git clone $REPO_PATH/common.git \
+    && sed -i 's/AlternateBase/Highlight/' $REPO_PATH/common/libs/seiscomp/gui/datamodel/originlocatorview.cpp \
     && git clone $REPO_PATH/main.git \
     && git clone $REPO_PATH/extras.git \
     && echo "Cloning external base components" \
